@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>LandingPage</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <section>
+            <div class="jumbotron text-center">
+                <h1 class="display-4">Mission to Mars</h1>
+                <a class="btn btn-lg text-white" style="background-color:blue;" href="/scrape" role="button">Scrape New
+                    Mars Data</a>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <font size="5" color="red">Mars News</font>
+                    <h6>{{mars_information.title}}</h6>
+                    <h11>{{mars_information.paragraph}}</h11><br>
+                    <font size="5" color="red">Current Weather</font><br>
+                    <h11>{{mars_information.weather}}</h11>
+                </div>
+                <div class="col-md-5">
+                    <font size="5" color="red">Featured Image</font>
+                    <img src="{{mars_information.featured_image}}" alt="Mars Featured Image" height="350" width="350"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <font size="5" color="red">Mars Facts</font>
+                    <div class="col-md-12">
+                    {{mars_information.facts}
+                </div>
+            </div>
+        <font size = "10">Mars Hemispheres</h4>
+        <div class="card-deck">
+            <hr>
+            <div class="col-md-12">
+                <div class="row" id="mars_information-hemispheres">
+                    {% for hemisphere in mars_information.hemispheres %}
+                    <div class="col-md-6">
+                        <div class="card text-white bg-danger" style="margin: 30px;">
+                            <img class="card-img-top" src="{{hemisphere.image_url | default('static/images/error.png', true)}}" alt="..."/>
+                            <div class="card-body">
+                                <p class="card-text">{{hemisphere.title}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
